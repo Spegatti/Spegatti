@@ -1,5 +1,3 @@
-<?php
-
 declare(strict_types=1);
 
 namespace Terpz710\Homes\Command;
@@ -14,11 +12,13 @@ use Terpz710\Homes\Main;
 class HomeCommand extends Command {
 
     private $dataFolder;
+    private $plugin;
 
-    public function __construct(string $dataFolder) {
+    public function __construct(Main $plugin) {
         parent::__construct("home", "Teleport to your home location");
         $this->setPermission("homes.home");
-        $this->dataFolder = $DataFolder();
+        $this->plugin = $plugin;
+        $this->dataFolder = $plugin->getDataFolder();
     }
 
     public function execute(CommandSender $sender, string $label, array $args): bool {
@@ -40,12 +40,12 @@ class HomeCommand extends Command {
                 $x = $homeLocation['x'];
                 $y = $homeLocation['y'];
                 $z = $homeLocation['z'];
-                $worldName = $homeLocation['world']; 
+                $worldName = $homeLocation['world'];
 
                 $world = $sender->getServer()->getWorldManager()->getWorldByName($worldName);
 
                 if ($world !== null) {
-                    $homeVector = new Vector3($x, $y, $z); // No yaw and pitch.
+                    $homeVector = new Vector3($x, $y, $z);
                     $sender->teleport($homeVector, $world);
                     $sender->sendMessage("Teleported to your home location '$homeName'.");
                 } else {
