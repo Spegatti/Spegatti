@@ -13,13 +13,12 @@ use Terpz710\Homes\Main;
 
 class HomeCommand extends Command {
 
-    private $dataFolder
+    private $dataFolder;
 
-    public function __construct(String $dataFolder) {
+    public function __construct(string $dataFolder) {
         parent::__construct("home", "Teleport to your home location");
         $this->setPermission("homes.home");
-        $this->plugin = $plugin;
-        $this->dataFolder = $plugin->getDataFolder();
+        $this->dataFolder = $dataFolder;
     }
 
     public function execute(CommandSender $sender, string $label, array $args): bool {
@@ -41,7 +40,7 @@ class HomeCommand extends Command {
                 $x = $homeLocation['x'];
                 $y = $homeLocation['y'];
                 $z = $homeLocation['z'];
-                $worldName = $homeLocation['world'];
+                $worldName = $homeLocation['world']; // Get the world name from the loaded data.
 
                 $world = $sender->getServer()->getWorldManager()->getWorldByName($worldName);
 
