@@ -8,6 +8,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\Config;
+use pocketmine\math\Vector3;
 use Terpz710\Homes\Main;
 
 class HomeCommand extends Command {
@@ -44,7 +45,8 @@ class HomeCommand extends Command {
                 $world = $sender->getServer()->getWorldManager()->getWorldByName($worldName);
 
                 if ($world !== null) {
-                    $sender->teleport(new Position($x, $y, $z, $world));
+                    $homeVector = new Vector3($x, $y, $z);
+                    $sender->teleport($homeVector, $world);
                     $sender->sendMessage("Teleported to your home location '$homeName'.");
                 } else {
                     $sender->sendMessage("The world of your home location no longer exists.");
