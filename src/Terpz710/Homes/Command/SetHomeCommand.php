@@ -34,11 +34,13 @@ class SetHomeCommand extends Command {
             }
 
             $homeName = $args[0];
+            $position = $sender->getPosition(); // Get the player's position.
+
             $homeLocation = [
-                'x' => $sender->getX(),
-                'y' => $sender->getY(),
-                'z' => $sender->getZ(),
-                'world' => $sender->getWorld()->getFolderName(), // Updated method to get the world's name.
+                'x' => $position->getX(),
+                'y' => $position->getY(),
+                'z' => $position->getZ(),
+                'world' => $sender->getWorld()->getFolderName(), // Get the world's name.
             ];
 
             $this->saveHomeData($sender, $homeName, $homeLocation);
