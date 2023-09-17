@@ -41,7 +41,7 @@ class HomeCommand extends Command {
                 $x = $homeLocation['x'];
                 $y = $homeLocation['y'];
                 $z = $homeLocation['z'];
-                $sender->getWorld()->getFolderName()
+                $sender->getWorld()->getFolderName(),
             ];
 
                 if ($world !== null) {
