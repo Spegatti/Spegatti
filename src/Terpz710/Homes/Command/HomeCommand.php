@@ -14,13 +14,11 @@ use Terpz710\Homes\Main;
 class HomeCommand extends Command {
 
     private $dataFolder;
-    private $plugin;
 
     public function __construct(Main $plugin) {
         parent::__construct("home", "Teleport to your home location");
         $this->setPermission("homes.home");
         $this->dataFolder = $plugin->getDataFolder();
-        $this->plugin = $plugin;
     }
 
     public function execute(CommandSender $sender, string $label, array $args): bool {
