@@ -6,7 +6,6 @@ namespace Terpz710\Homes\Command;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\world\WorldManager;
 use pocketmine\player\Player;
 use pocketmine\utils\Config;
 use pocketmine\math\Vector3;
@@ -41,7 +40,9 @@ class HomeCommand extends Command {
                 $x = $homeLocation['x'];
                 $y = $homeLocation['y'];
                 $z = $homeLocation['z'];
-                $sender->getWorld()->getFolderName($world);
+                $worldName = $homeLocation['world']; // Get the world name from the loaded data.
+
+                $world = $sender->getServer()->getWorldManager()->getWorldByName($worldName);
 
                 if ($world !== null) {
                     $homeVector = new Vector3($x, $y, $z);
