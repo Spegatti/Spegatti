@@ -41,7 +41,8 @@ class HomeCommand extends Command {
                 $x = $homeLocation['x'];
                 $y = $homeLocation['y'];
                 $z = $homeLocation['z'];
-                $worldName = $homeLocation['world'];
+                $sender->getWorld()->getFolderName()
+            ];
 
                 if ($world !== null) {
                     $homeVector = new Vector3($x, $y, $z);
