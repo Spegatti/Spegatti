@@ -43,7 +43,7 @@ class HomeCommand extends Command {
                 $z = $homeLocation['z'];
                 $sender->getWorld()->getFolderName();
 
-                if ($world !== null) {
+                if ($homeLocation !== null) {
                     $homeVector = new Vector3($x, $y, $z);
                     $sender->teleport($homeVector, $world);
                     $sender->sendMessage("Teleported to your home location '$homeName'.");
