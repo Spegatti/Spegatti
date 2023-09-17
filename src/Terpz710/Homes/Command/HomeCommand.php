@@ -15,7 +15,7 @@ class HomeCommand extends Command {
 
     private $dataFolder
 
-    public function __construct(Main $plugin) {
+    public function __construct(String $dataFolder) {
         parent::__construct("home", "Teleport to your home location");
         $this->setPermission("homes.home");
         $this->plugin = $plugin;
