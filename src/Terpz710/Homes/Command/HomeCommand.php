@@ -13,8 +13,7 @@ use Terpz710\Homes\Main;
 
 class HomeCommand extends Command {
 
-    private $dataFolder;
-    private $plugin;
+    private $dataFolder
 
     public function __construct(Main $plugin) {
         parent::__construct("home", "Teleport to your home location");
