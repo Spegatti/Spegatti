@@ -45,8 +45,7 @@ class HomeCommand extends Command {
                 $world = $sender->getServer()->getWorldManager()->getWorldByName($worldName);
 
                 if ($world !== null) {
-                    $homeVector = new Vector3($x, $y, $z);
-                    $sender->teleport($homeVector, $world);
+                    $sender->teleport($world);
                     $sender->sendMessage("Teleported to your home location '$homeName'.");
                 } else {
                     $sender->sendMessage("The world of your home location no longer exists.");
