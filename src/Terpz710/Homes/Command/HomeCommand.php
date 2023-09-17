@@ -40,7 +40,7 @@ class HomeCommand extends Command {
                 $x = $homeLocation['x'];
                 $y = $homeLocation['y'];
                 $z = $homeLocation['z'];
-                $worldName = $homeLocation['world']; // Get the world name from the loaded data.
+                $worldName = $homeLocation['world'];
 
                 $world = $sender->getServer()->getWorldManager()->getWorldByName($worldName);
 
