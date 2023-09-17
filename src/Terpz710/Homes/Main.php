@@ -18,7 +18,7 @@ class Main extends PluginBase {
         $this->createHomesDirectory();
 
         $this->getServer()->getCommandMap()->register("sethome", new SetHomeCommand($this->getDataFolder()));
-        $this->getServer()->getCommandMap()->register("home", new HomeCommand($this));
+        $this->getServer()->getCommandMap()->register("home", new HomeCommand($this->getDataFolder()));
         $this->getServer()->getCommandMap()->register("delhome", new DelHomeCommand($this->getDataFolder()));
         $this->getServer()->getCommandMap()->register("homes", new HomesCommand($this->getDataFolder()));
     }
