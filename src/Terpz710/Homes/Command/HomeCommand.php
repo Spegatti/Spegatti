@@ -43,8 +43,6 @@ class HomeCommand extends Command {
                 $z = $homeLocation['z'];
                 $worldName = $homeLocation['world'];
 
-                $world = $sender->getServer()->getWorld()->getFolderName($worldName);
-
                 if ($world !== null) {
                     $homeVector = new Vector3($x, $y, $z);
                     $sender->teleport($homeVector, $world);
