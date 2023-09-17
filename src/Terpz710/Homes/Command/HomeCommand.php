@@ -14,11 +14,13 @@ use Terpz710\Homes\Main;
 class HomeCommand extends Command {
 
     private $dataFolder;
+    private $plugin;
 
-    public function __construct(string $dataFolder) {
+    public function __construct(Main $plugin) {
         parent::__construct("home", "Teleport to your home location");
         $this->setPermission("homes.home");
-        $this->dataFolder = $dataFolder;
+        $this->dataFolder = $plugin->getDataFolder();
+        $this->plugin = $plugin;
     }
 
     public function execute(CommandSender $sender, string $label, array $args): bool {
@@ -40,12 +42,13 @@ class HomeCommand extends Command {
                 $x = $homeLocation['x'];
                 $y = $homeLocation['y'];
                 $z = $homeLocation['z'];
-                $worldName = $homeLocation['world']; // Get the world name from the loaded data.
+                $worldName = $homeLocation['world']; 
 
                 $world = $sender->getServer()->getWorldManager()->getWorldByName($worldName);
 
                 if ($world !== null) {
-                    $sender->teleport($world);
+                    $homeVector = new Vector3($x, $y, $z); // No yaw and pitch.
+                    $sender->teleport($homeVector, $world);
                     $sender->sendMessage("Teleported to your home location '$homeName'.");
                 } else {
                     $sender->sendMessage("The world of your home location no longer exists.");
