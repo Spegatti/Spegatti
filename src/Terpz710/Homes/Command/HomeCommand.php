@@ -14,8 +14,9 @@ use Terpz710\Homes\Main;
 class HomeCommand extends Command {
 
     private $dataFolder;
+    private $plugin;
 
-    public function __construct(string $dataFolder) {
+    public function __construct(Main $plugin, string $dataFolder) {
         parent::__construct("home", "Teleport to your home location");
         $this->setPermission("homes.home");
         $this->dataFolder = $plugin->getDataFolder();
