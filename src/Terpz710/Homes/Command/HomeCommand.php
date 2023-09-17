@@ -45,7 +45,9 @@ class HomeCommand extends Command {
                 $world = $sender->getServer()->getWorldManager()->getWorldByName($worldName);
 
                 if ($world !== null) {
-                    $homeVector = new Vector3($x, $y, $z);
+                    $yaw = $sender->getYaw(); // Get the player's current yaw
+                    $pitch = $sender->getPitch(); // Get the player's current pitch
+                    $homeVector = new Vector3($x, $y, $z, $yaw, $pitch); // Include yaw and pitch
                     $sender->teleport($homeVector, $world);
                     $sender->sendMessage("Teleported to your home location '$homeName'.");
                 } else {
